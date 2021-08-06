@@ -1,4 +1,13 @@
 # Protein selection
+
+## Difference between immunological fluorescence and fluorescence protein fusions. 
+||Immunolabelling|Fluorescent protein|
+|-----|------------ |-------------- |
+|probe palette|larger, including organic dyes|smaller|
+|number of photons|higher when using organic dye|lower|
+|Required condition|harsh|light|
+
+
 ## Kaede
 
 ## rsEGFP
