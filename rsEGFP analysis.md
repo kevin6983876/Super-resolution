@@ -18,7 +18,7 @@
 ![Picture](https://lh4.googleusercontent.com/sDYIcmM67rvtJjnFdmLbAvoGUZTNXeIGWMx3KFUoNvkUkHWXRYTuk0zMz_DQaFh308J8UxtTYVai0QYS45em13wrngOmWzZjckQcRIWhbEeYJHBTk7dD_T1M1AU5-aRRRQ=w1280)
 
 #### Results
-- Excitation condition
+- Excitation conditions
 
 |Item|Period 1|Period 2|Period 3|Period 4|
 |----|----|---|---|----|
@@ -29,19 +29,23 @@
 
 |Item|Period 5|
 |----|-------|
-|Laser|488/405|
+|Laser*|488/405|
 |Laser power|50%/100%|
 |Exposure time|0.1s/0.2s|
 |Frames|500|
 
+\*lasers are shined alternatively
+
+|PBS|PA+PBS|PA+FC|
+|---|---|---|
+|<img src="https://lh5.googleusercontent.com/IaS-lg4LyFxsRjujq0NE-NUuDv6osRNrC_QgI9WJ0s7gmbRQxsm1sqbN_kbZdvFRfqnMqHnBUN3DiFNcUiYGHU0=w1280" width="200"> Figure 1|<img src="https://lh3.googleusercontent.com/cwiONR6LOVmGHaAQwbOvJ1u4YLFj1S6b3ADudBO9pE02EtlaV3xgLAXrDxjKlK36rVOBK4uecH6agaCGZVsLUp0=w1280" width="200"> Figure 2|<img src="https://lh6.googleusercontent.com/WxLthcY-NMsjFPxwNNJ0eeTyzd7JmTRIHWwt0QP3XsiAgNz0bh0LF2JKkKcLG2GDGe3H4YGQi-tswPnaVI1TQxw=w1280" width="200"> Figure 3|
+
 scale bar = 100 um
-PBS
-<img src="https://lh5.googleusercontent.com/IaS-lg4LyFxsRjujq0NE-NUuDv6osRNrC_QgI9WJ0s7gmbRQxsm1sqbN_kbZdvFRfqnMqHnBUN3DiFNcUiYGHU0=w1280" width="200">
-PA+PBS
-<img src="https://lh3.googleusercontent.com/cwiONR6LOVmGHaAQwbOvJ1u4YLFj1S6b3ADudBO9pE02EtlaV3xgLAXrDxjKlK36rVOBK4uecH6agaCGZVsLUp0=w1280" width="200">
-PA+FC
-<img src="https://lh6.googleusercontent.com/WxLthcY-NMsjFPxwNNJ0eeTyzd7JmTRIHWwt0QP3XsiAgNz0bh0LF2JKkKcLG2GDGe3H4YGQi-tswPnaVI1TQxw=w1280" width="200">
 
-<img src="https://lh3.googleusercontent.com/aZkt7XWKLu4vAc2se5ZkzYimg9MKnpFMzkV3coPBTXttgh2EhKCuu8djoo0WcmSSjEeAgI39-A-eaMWOcoZMVjY8x4aBAdq0iLF_0-mvgjDXAgdCAFnFVY0oYlttzGE2JA=w1280" width="600">
+<img src="https://lh3.googleusercontent.com/aZkt7XWKLu4vAc2se5ZkzYimg9MKnpFMzkV3coPBTXttgh2EhKCuu8djoo0WcmSSjEeAgI39-A-eaMWOcoZMVjY8x4aBAdq0iLF_0-mvgjDXAgdCAFnFVY0oYlttzGE2JA=w1280" width="600"> Figure 4
 
-<img src="https://lh5.googleusercontent.com/XboX2pMGkA5F0Jsw78ZNszlT6jchD1wYgU59GW2Rw292Ek4QVrOXcBgx2B3VR40ZFFXqWJjGNig1FfO3jD5xfZj6FQ9ARPeCC6gC95yaAP1WXs10ae2BgxPTJwKGVyyFGw=w1280" width="600">
+<img src="https://lh5.googleusercontent.com/XboX2pMGkA5F0Jsw78ZNszlT6jchD1wYgU59GW2Rw292Ek4QVrOXcBgx2B3VR40ZFFXqWJjGNig1FfO3jD5xfZj6FQ9ARPeCC6gC95yaAP1WXs10ae2BgxPTJwKGVyyFGw=w1280" width="600"> Figure 5
+
+#### Discussion
+Keeping all excitation conditions fixed, we can see much more fluorophores are switched on again in the sample with PA+FC immersion (Figure 4). 
+When 488-nm and 405-nm lasers are shined alternatively, sample with PA+FC experiences the largest signal increase compared to that with PBS or PA+PBS (Figure 5). 
