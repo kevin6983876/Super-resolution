@@ -12,7 +12,7 @@
 
 ## rsEGFP
 
-rsEGFP analysis
+[rsEGFP analysis](https://github.com/kevin6983876/Super-resolution/blob/main/rsEGFP%20analysis.md)
 
 ## mEos
 [This protein](https://www.nature.com/articles/nmeth.1296) does not suffer from oligomerization, small photon budgets or poor photostability. 
