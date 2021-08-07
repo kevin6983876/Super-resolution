@@ -34,6 +34,7 @@
 |Exposure time|0.1s/0.2s|
 |Frames|500|
 
+scale bar = 100 um
 PBS
 <img src="https://lh5.googleusercontent.com/IaS-lg4LyFxsRjujq0NE-NUuDv6osRNrC_QgI9WJ0s7gmbRQxsm1sqbN_kbZdvFRfqnMqHnBUN3DiFNcUiYGHU0=w1280" width="200">
 PA+PBS
