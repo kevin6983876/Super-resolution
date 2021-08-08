@@ -54,5 +54,11 @@ When 488-nm and 405-nm lasers are shined alternatively, sample with PA+FC experi
 
 rsEGFP<sub>on</sub> &rlarr; rsEGFP<sub>off</sub>
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{drsEGFP_on}{dt}=-k_+rsEGFP_on+k_-rsEGFP_off">
+$k_+$: forward rate constant, is dependent on light intensity
+
+$k_-$: backward rate constant
+
+$\frac{d[rsEGFP_{on}]}{dt}=-k_+[rsEGFP_{on}]+k_-[rsEGFP_{off}]$
+
+$\frac{d[rsEGFP_{off}]}{dt}=k_+[rsEGFP_{on}]-k_-[rsEGFP_{off}]$
 
