@@ -15,7 +15,7 @@
 |PA+FC|V|X|V|
 - Genotype 
 
-![Picture](https://lh4.googleusercontent.com/sDYIcmM67rvtJjnFdmLbAvoGUZTNXeIGWMx3KFUoNvkUkHWXRYTuk0zMz_DQaFh308J8UxtTYVai0QYS45em13wrngOmWzZjckQcRIWhbEeYJHBTk7dD_T1M1AU5-aRRRQ=w1280)
+![Picture](https://lh6.googleusercontent.com/TV3AiHvKeGxcnTOA1PpWsJXOZVjeF_6u88QMOocujZ9zYSkz2RKtyOeS46JzhH8U7XJPlzRZmW74Z0WZE4ypVyRP8EqvB2GmzeuW2K8qdV2-ZmWeaOZuJT5tc823rkNFsA=w1280)
 
 #### Results
 - Excitation conditions
