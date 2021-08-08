@@ -49,3 +49,10 @@ scale bar = 100 um
 #### Discussion
 Keeping all excitation conditions fixed, we can see much more fluorophores are switched on again in the sample with PA+FC immersion (Figure 4). 
 When 488-nm and 405-nm lasers are shined alternatively, sample with PA+FC experiences the largest signal increase compared to that with PBS or PA+PBS (Figure 5). 
+
+##### Data fitting
+
+rsEGFP<sub>on</sub> &rlarr; rsEGFP<sub>off</sub>
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{drsEGFP_on}{dt}=-k_+rsEGFP_on+k_-rsEGFP_off">
+
