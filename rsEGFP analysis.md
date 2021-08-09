@@ -42,9 +42,9 @@
 
 scale bar = 100 um
 
-<img src="https://lh3.googleusercontent.com/aZkt7XWKLu4vAc2se5ZkzYimg9MKnpFMzkV3coPBTXttgh2EhKCuu8djoo0WcmSSjEeAgI39-A-eaMWOcoZMVjY8x4aBAdq0iLF_0-mvgjDXAgdCAFnFVY0oYlttzGE2JA=w1280" width="600"> [Figure 4](https://drive.google.com/file/d/1Fw9bTiUDrxCgBrglp0Rw4l2iFb-ebacC/view?usp=sharing)
+[Figure 4](https://drive.google.com/file/d/1Fw9bTiUDrxCgBrglp0Rw4l2iFb-ebacC/view?usp=sharing)
 
-<img src="https://lh5.googleusercontent.com/XboX2pMGkA5F0Jsw78ZNszlT6jchD1wYgU59GW2Rw292Ek4QVrOXcBgx2B3VR40ZFFXqWJjGNig1FfO3jD5xfZj6FQ9ARPeCC6gC95yaAP1WXs10ae2BgxPTJwKGVyyFGw=w1280" width="600"> [Figure 5](https://drive.google.com/file/d/1Ab08d1nVnuGUzhrAhIZ0Cjfznwxyv3f9/view?usp=sharing)
+[Figure 5](https://drive.google.com/file/d/1Ab08d1nVnuGUzhrAhIZ0Cjfznwxyv3f9/view?usp=sharing)
 
 #### Discussion
 Keeping all excitation conditions fixed, we can see much more fluorophores are switched on again in the sample with PA+FC immersion (Figure 4). 
