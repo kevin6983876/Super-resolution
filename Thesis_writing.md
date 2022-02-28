@@ -14,3 +14,10 @@ In this work, we combine two-photon excitation into a spinning disk confocal set
 
 ### Trade-off between excitation power and sample collapse
 
+
+Papers:  
+[3D STED](https://drive.google.com/file/d/15G1G0A-zgt5GrhK4TLFYyHvQrMD7oiez/view?usp=sharing)  
+[Polarization-resolved two photon spinning disk](https://drive.google.com/file/d/1I7E_GrQpJe9I9jCjw4fikekqE2fGU0fL/view?usp=sharing)  
+[Drosophila brain simulation](https://neurokernel.github.io/about.html)：羅中泉老師。  
+[Drosophila as model animal1](https://www.jneurosci.org/content/33/45/17560), [2](https://pubmed.ncbi.nlm.nih.gov/20383202/)  
+[Drosophila larvae imaging](https://elifesciences.org/articles/15567)
