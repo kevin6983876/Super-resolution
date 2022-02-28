@@ -15,6 +15,7 @@ In this work, we combine two-photon excitation into a spinning disk confocal set
 ### Trade-off between excitation power and sample collapse
 
 ## Why is blinking necessary?
+refer to [nature protocol](https://www.nature.com/articles/nprot.2011.336.pdf)
 To achieve single molecule imaging, blinking is necessary. Otherwise, it is very hard to distinguish single molecule. 
 
 ### How many molecules do you need?
@@ -28,9 +29,9 @@ Unlike PALM that has fixed ON-state bleaching time, the ON/OFF states dynamics i
 Alexa Fluor and ATTO dyes can be photoreduced in the presence of electron donors (GSH or Trp), especially in a basic condition (pH~9).
 ![Typical photoswitching mechanism of Alexa Fluor](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273553073_423614409536286_5486102589772724378_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=TwfHBIH-kqEAX9UNXmF&_nc_ht=scontent-tpe1-1.xx&oh=03_AVINNhKg9ONqG_xfQgQCCIHnIbpNeOXBaowy4oGL6KGqXA&oe=6243549D)
 
-$k_{exc}$:??
-$k_{fl}$:??
-$k_{isc}$:??
+$k_{exc}$
+$k_{fl}$
+$k_{isc}$
 
 
 ### How to determine the labeling density?
