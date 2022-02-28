@@ -14,6 +14,9 @@ In this work, we combine two-photon excitation into a spinning disk confocal set
 
 ### Trade-off between excitation power and sample collapse
 
+## Why blinking is necessary?
+To achieve single molecule imaging, blinking is necessary. Otherwise, it is very hard to distinguish single molecule. 
+
 
 Papers:  
 [3D STED](https://drive.google.com/file/d/15G1G0A-zgt5GrhK4TLFYyHvQrMD7oiez/view?usp=sharing)  
