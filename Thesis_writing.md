@@ -38,8 +38,6 @@ Hence, the general solution of $X(t)=\left(\begin{matrix}S_0(t)\\S_1(t)\\T(t)\en
 - $\lambda_2$ is a very large term. Hard to be measured.
 - $\lambda_3$ can be measured. Assuming $k_{12}+k_{21}>>k_{31}+k_{23}$, then $\lambda_3=-k_{31}-\frac{k_{12}k_{23}}{k_{12}+k_{21}}$, $T_{eq}=\frac{k_{23}k_{12}}{k_{12}(k_{23}+k_{31})+k_{31}(k_{21}+k_{23})}$
 
-Suppose $k_{12}$ is proportional to intensity, i.e., $k_{12}=aI$
-
 Combining the following effects to autocorrelation function:
 - diffusion of molecule in and out the laser volume
 - molecules entering and leaving triplet state
@@ -47,6 +45,12 @@ We have our autocorrelation function
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274656221_370807598223761_1386202177098644304_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=33g4xqinGeoAX8w81LX&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVI03IdCqiuI_4Sf88K_gmt68LJOY7ctbtjk7CUPpTCAhw&oe=6250A98A)
 
 #### Rh6G photophysical properties (Case study)
+
+After several fitting procedures, we have
+
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274325058_926017408076972_7050144123343753985_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=2BW97AfH0y0AX89R9Bx&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLS3lFJTBFNkAqN1zHd1ecB9HOyLZ3PVWzvs0ANzAyycA&oe=624D1A14)
+
+We can also obtain $k_{12}=\sigma_{exc}\times \frac{P}{\pi\omega_1^2}$
 
 
 
