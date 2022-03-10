@@ -24,14 +24,45 @@ With an aim of 20-nm resolution, a fluorophore must be localized at least every 
 
 ### What is the lifetime of the molecule?
 Unlike PALM that has fixed ON-state bleaching time, the ON/OFF states dynamics in dSTORM can be adjusted by external means. 
+[...]
+#### The photoswitching mechanism (Theory)
+A three-state model. Using this model can explain why there is fast blinking.  
 
-#### The photoswitching mechanism
-Alexa Fluor and ATTO dyes can be photoreduced in the presence of electron donors (GSH or Trp), especially in a basic condition (pH~9).
-![Typical photoswitching mechanism of Alexa Fluor](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273553073_423614409536286_5486102589772724378_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=TwfHBIH-kqEAX9UNXmF&_nc_ht=scontent-tpe1-1.xx&oh=03_AVINNhKg9ONqG_xfQgQCCIHnIbpNeOXBaowy4oGL6KGqXA&oe=6243549D)
+![Three state model](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274254602_509407327286982_4285864595330128796_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PnSnIKX4qHAAX_te7v0&_nc_oc=AQk0Qe9OIMObcV-zj2Hi0inw2RXwQmoMCAQ1aBzjqbyDCiYuIqpISI0xffLo6J_n-18&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLD4UiBliLSvw4tzKnsA4pm-gcXVdWx7UNizzoUrpuiuQ&oe=624FEEA4)
+Mathematically, we can use three ODE to describe the above system.
+$\frac{d}{dt}\left(\begin{matrix}S_0(t)\\S_1(t)\\T(t)\end{matrix}\right) =\left(\begin{matrix}-k_{12} & k_{21} & k_{31}\\k_{12} & -(k_{23}+k_{21}) & 0\\0 & k_{23} & -k_{31}\end{matrix}\right)\left(\begin{matrix}S_0(t)\\S_1(t)\\T(t)\end{matrix}\right)$
+Solve for the eigenvalue equation $$\lambda(\lambda^2+(k_{23}+k_{21}+k_{12}+k_{31})\lambda+k_{12}k_{23}+k_{31}k_{23}+k_{31}k_{21})=0$$ for the middle matrix. We have three eigenvalues $\lambda_1=0, \lambda_2, \lambda_3$, and corresponding eigenvectors $\bold{x_1,x_2,x_3}$
+Hence, the general solution of $X(t)=\left(\begin{matrix}S_0(t)\\S_1(t)\\T(t)\end{matrix}\right)=c_1e^{\lambda_1t}\bold{x}_1+c_2e^{\lambda_2t}\bold{x}_2+c_3e^{\lambda_3t}\bold{x}_3$
 
-$k_{exc}$
-$k_{fl}$
-$k_{isc}$
+- Since $\lambda_1=0$, the system will approach to a steady state when $t\rightarrow\infty$.
+- $\lambda_2$ is a very large term. Hard to be measured.
+- $\lambda_3$ can be measured. Assuming $k_{12}+k_{21}>>k_{31}+k_{23}$, then $\lambda_3=-k_{31}-\frac{k_{12}k_{23}}{k_{12}+k_{21}}$, $T_{eq}=\frac{k_{23}k_{12}}{k_{12}(k_{23}+k_{31})+k_{31}(k_{21}+k_{23})}$
+
+Suppose $k_{12}$ is proportional to intensity, i.e., $k_{12}=aI$
+
+Combining the following effects to autocorrelation function:
+- diffusion of molecule in and out the laser volume
+- molecules entering and leaving triplet state
+We have our autocorrelation function
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274656221_370807598223761_1386202177098644304_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=33g4xqinGeoAX8w81LX&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVI03IdCqiuI_4Sf88K_gmt68LJOY7ctbtjk7CUPpTCAhw&oe=6250A98A)
+
+#### Rh6G photophysical properties (Case study)
+
+
+
+#### Kaede photophysical properties (Case study)
+[Photophysical properties of Kaede](https://ueaeprints.uea.ac.uk/id/eprint/53399/1/2015AddisonKPhD.pdf)
+
+ACF diagram of red form Kaede
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274596371_745232509772546_6097533766050579081_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=BUDkHIOApw4AX92VFZO&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLf8kGFrbrReJu54JzOpPM8r2pBhJ0X9Pya1f5m6w3V2g&oe=6250DB86)
+[...]
+![Characterization of the Photoconversion on Reaction of the Fluorescent Protein Kaede on the Single-Molecule Level](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274309488_253777436833989_1708364374648674418_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=p2HOGooN3joAX-Sj37B&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKuiFvSnQR6r_DNQu2sVH-9SV0d8IpCh5CpHH5qkuy-Cw&oe=6246EF1C)
+![Han-Yuan's journal](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273573200_376756070946666_2126222706031454664_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=WhExxP47MtsAX9VbkJB&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJ5xEjGf0X50k3ia8h9Z9K0Cu-IWP-o7eg8-K5rlBelRQ&oe=6245026A)
+You can clearly see that the blinking dynamics is about submilliseconds. 250 ms exposure time is too long for resolving individual molecule. 
+
+### Intensity vs blinking behavior
+From $2.5$ to $78\frac{kW}{cm^2}$
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273648558_300396522012577_1102684933084334318_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=z9VyP9SEK5gAX-RrYIA&tn=kmMc2ol6ujtRzeuG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLNAO7arsvHyt49Lwihhrm-Zxc1-WrLrwhwJqIOy_8e4Q&oe=6248DEB8)
 
 
 ### How to determine the labeling density?
