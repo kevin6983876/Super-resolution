@@ -12,8 +12,6 @@ Super-resolution imaging avails the imaging resolution down to tens of nanometer
 
 In this work, we combine two-photon excitation into a spinning disk confocal setup to enable deep-tissue penetration and wide-field optical sectioned detection, respectively. The two-photon spinning disk microscope offers ~500 μm and ~100 μm imaging depths in uncleared mouse and *Drosophila* brains, similar to typical single-point detection two-photon microscopy. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to ~50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. More importantly, the protocol works for living brains, so our work paves the way toward *in vivo* functional connectome studies. 
 
-### Trade-off between excitation power and sample collapse
-
 ## Why is blinking necessary?
 refer to [nature protocol](https://www.nature.com/articles/nprot.2011.336.pdf)
 To achieve single molecule imaging, blinking is necessary. Otherwise, it is very hard to distinguish single molecule. 
@@ -43,7 +41,8 @@ Combining the following effects to autocorrelation function:
 - molecules entering and leaving triplet state
 We have our autocorrelation function
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274656221_370807598223761_1386202177098644304_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=33g4xqinGeoAX8w81LX&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVI03IdCqiuI_4Sf88K_gmt68LJOY7ctbtjk7CUPpTCAhw&oe=6250A98A)
-
+A typical relation between $\lambda_3$(related to flickering rate) and intensity.
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274652847_5168091999896421_1049625651085026328_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PeWX2R0j-bEAX-oltq3&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIFIzqhBILNuxOd2LnCLmNQdNVbRlczL6Lqcqo_JEcYiw&oe=624DFFA2)
 #### Rh6G photophysical properties (Case study)
 
 After several fitting procedures, we have
@@ -52,20 +51,20 @@ After several fitting procedures, we have
 
 We can also obtain $k_{12}=\sigma_{exc}\times \frac{P}{\pi\omega_1^2}$
 
-
+#### DsRed photophysical properties (Case study)
 
 #### Kaede photophysical properties (Case study)
 [Photophysical properties of Kaede](https://ueaeprints.uea.ac.uk/id/eprint/53399/1/2015AddisonKPhD.pdf)
-
-ACF diagram of red form Kaede
-![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274596371_745232509772546_6097533766050579081_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=BUDkHIOApw4AX92VFZO&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLf8kGFrbrReJu54JzOpPM8r2pBhJ0X9Pya1f5m6w3V2g&oe=6250DB86)
-[...]
 ![Characterization of the Photoconversion on Reaction of the Fluorescent Protein Kaede on the Single-Molecule Level](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274309488_253777436833989_1708364374648674418_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=p2HOGooN3joAX-Sj37B&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKuiFvSnQR6r_DNQu2sVH-9SV0d8IpCh5CpHH5qkuy-Cw&oe=6246EF1C)
 ![Han-Yuan's journal](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273573200_376756070946666_2126222706031454664_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=WhExxP47MtsAX9VbkJB&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJ5xEjGf0X50k3ia8h9Z9K0Cu-IWP-o7eg8-K5rlBelRQ&oe=6245026A)
 You can clearly see that the blinking dynamics is about submilliseconds. 250 ms exposure time is too long for resolving individual molecule. 
+[...]
 
-### Intensity vs blinking behavior
-From $2.5$ to $78\frac{kW}{cm^2}$
+##### Intensity dependece of ACF (The most important application)
+Here is the experimental results of ACF curve of red form Kaede when varying the excitation intensity (from $2.5$ to $78\frac{kW}{cm^2}$). 
+
+After fitting with the model
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275184263_632338294498567_2914250142237772510_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kwGErwIEvSAAX9wpAq6&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKUy8xS-TacV-8hBQtIsBIXUMJeuHYSrtyWHFA3KKByRg&oe=624F8332), where $\tau_i$ is the rate, and $F_i$ is the fraction, we have two blinking dynamics (i=2) with $\tau_1=6.5$ - $32$kHz(153$\mu s$-30$\mu s$), $F_1\approx30\%$, and $\tau_2=1.3$kHz - $10$kHz(769$\mu s$-100$\mu s$), $F_2\approx20\%$.
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273648558_300396522012577_1102684933084334318_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=z9VyP9SEK5gAX-RrYIA&tn=kmMc2ol6ujtRzeuG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLNAO7arsvHyt49Lwihhrm-Zxc1-WrLrwhwJqIOy_8e4Q&oe=6248DEB8)
 
 
