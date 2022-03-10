@@ -4,7 +4,7 @@
 [Photonic West](https://docs.google.com/document/d/1Y5SSFlGdQwiD2743RTZNmM7oJkpC0f3VwCBZsSFFnZw/edit?usp=sharing)
 
 ### Abstract
-Recently, whole-*Drosophila*-brain structural mapping has been demonstrated with ~50-nm resolution, but not *in vivo*. In this work, we combine two-photon excitation into a spinning disk confocal setup to enable ~500 μm imaging depths in uncleared mouse brains (~100 μm in *Drosophila*), and wide-field optical sectioned detection, respectively. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to ~50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. Our work paves the way toward *in vivo* functional connectome studies. 
+Recently, whole-*Drosophila*-brain structural mapping has been demonstrated with 50-nm resolution, but not *in vivo*. In this work, we combine two-photon excitation into a spinning disk confocal setup to enable 500 μm imaging depths in uncleared mouse brains (~100 μm in *Drosophila*), and wide-field optical sectioned detection, respectively. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to 50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. Our work paves the way toward *in vivo* functional connectome studies. 
 
 ### Introduction
 
@@ -14,7 +14,40 @@ In this work, we combine two-photon excitation into a spinning disk confocal set
 
 ## Why is blinking necessary?
 refer to [nature protocol](https://www.nature.com/articles/nprot.2011.336.pdf)
-To achieve single molecule imaging, blinking is necessary. Otherwise, it is very hard to distinguish single molecule. 
+To capture single molecule signal, two conditions must be achieved.
+1. High enough contrast
+1. Only one ON-state molecule in the FOV
+
+Let's do some calculations. 
+[PALM video](https://drive.google.com/file/d/1b6W5BdQX6stIgmMg8uTxuXoXUNvQl6vC/view?usp=sharing)
+
+The frame rate is about 0.5s to 1s, and frame number is about $10^4$ to $10^5$ frames. 
+
+### Why we need that long time?
+[Kaede bleaching dynamics](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2745648/#SD1)
+
+#### Nature of photobleaching
+Photobleaching probability is virtually independent with spot intensity([ref](https://pubmed.ncbi.nlm.nih.gov/16538628/)). We can say that photobleaching is molecule-wise. 
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274867197_1393980431060470_4938471626513267009_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Q-hU4qZXPxUAX_sXgGG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVL1XzlqiSWLznkELR8FKjjT9m9UOD7egYi8c9MYAAVaeA&oe=624F4592)
+
+#### Comparison between widefield bleaching and confocal bleaching
+Condition:
+1. Widefield: 40x dry objective (Nikon Plan Fluorite,
+NA = 0.85)
+1. Confocal: 40x oil immersion objective (Olympus UPlan Apo, NA = 1.00)
+1. Laser intensity = ~475 $mW/cm^2$ power (For confocal and widefield)
+
+
+Widefield
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274294032_701256954381925_919571328593342760_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=DnXi9i0ZEKoAX_10cOT&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLrZYuLvFOu3AE0rlvdSYvbJQJhK0_BuGpNYTi9SfPI7A&oe=624F7194)
+Confocal
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274536284_471719157983779_5648725458810395149_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=fbyPj7FNO7IAX_Gs37l&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJzvSvQh0uj9zC8clYIsJA_GevYZ6QRYWLkmTZkPeCQNw&oe=622B0812)
+
+Why confocal takes longer time to bleach???
+[Here is the answer](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7191/719105/Evaluating-and-improving-the-photostability-of-fluorescent-proteins/10.1117/12.814684.full?SSO=1).
+
+### Why we need that many frames?
+
 
 ### How many molecules do you need?
 With an aim of 20-nm resolution, a fluorophore must be localized at least every 10 nm. In 2D, this means in $1\mu m^2$, there must be at least $(\frac{1\mu m}{10 nm})^2\approx10^4$ moleceles. In a diffraction-limited spot of size $250 nm$, there must be $600$ molecules but only one molecule can be in the ON state. This means that the OFF state lifetime should be at least 600 times longer than the ON state life time.  
@@ -60,7 +93,7 @@ We can also obtain $k_{12}=\sigma_{exc}\times \frac{P}{\pi\omega_1^2}$
 You can clearly see that the blinking dynamics is about submilliseconds. 250 ms exposure time is too long for resolving individual molecule. 
 [...]
 
-##### Intensity dependece of ACF (The most important application)
+##### Intensity dependence of ACF (The most important application)
 Here is the experimental results of ACF curve of red form Kaede when varying the excitation intensity (from $2.5$ to $78\frac{kW}{cm^2}$). 
 
 After fitting with the model
