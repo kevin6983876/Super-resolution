@@ -1,16 +1,18 @@
-[Todo lists](https://docs.google.com/document/d/1PmqmAC3JLrxaWYusEgZz5_CUBiyhWrMrnnstpt6ula8/edit?usp=sharing)
+# Table of Contents
+1. [Principle of single-molecule imaging](#Principle-of-single-molecule-imaging)
+   1. [AIM](#aim-high-sbr-and-sparse)
+2. [The bleaching in PALM is time-consuming, especially in spinning disk](#The-bleaching-in-PALM-is-time-consuming)
+   1. [Comparison between confocal and widefield](#comparison-between-widefield-bleaching-and-confocal-bleaching)
+   2. [Theory explanation](#theory-explanation)
+      1. [Parameter](#parametersbleaching)
+      2. [Plugin parameters](#plugin-the-parameters-bleaching)
+3. [STORM is less time consuming](#storm-is-less-time-consuming)
+   1. [The photoswitching mechanism](#the-photoswitching-mechanism-theory)
+   2. [How to calculate blinking rate?](#how-to-calculate-blinking-rate)
+      1. [Parameters](#parameters)
+      2. [Plugin parameters](#plugin-the-parameters)
+   3. [How to determine the labeling density](#how-to-determine-the-labeling-density)
 
-## Deep tissue super-resolution imaging via two-photon spinning disk localization
-[Photonic West](https://docs.google.com/document/d/1Y5SSFlGdQwiD2743RTZNmM7oJkpC0f3VwCBZsSFFnZw/edit?usp=sharing)
-
-### Abstract
-Recently, whole-*Drosophila*-brain structural mapping has been demonstrated with 50-nm resolution, but not *in vivo*. In this work, we combine two-photon excitation into a spinning disk confocal setup to enable 500 μm imaging depths in uncleared mouse brains (~100 μm in *Drosophila*), and wide-field optical sectioned detection, respectively. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to 50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. Our work paves the way toward *in vivo* functional connectome studies. 
-
-### Introduction
-
-Super-resolution imaging avails the imaging resolution down to tens of nanometers. We have demonstrated whole brain structural mapping in a cleared *Drosophila* brain with ~50 nm resolution, but current optical clearing techniques do not allow *in vivo* observation. A technical milestone is to achieve *in vivo* whole brain imaging with similar resolution. Although *in vivo* super-resolution imaging has been realized, it is limited to thin samples. The underlying reason is that current state-of-the-art techniques rely on either saturation plus wavefront engineering or localization with blinking fluorophores. The former imaging depth is limited due to aberration or scattering in living tissues, and the latter suffers from lack of optical-sectioning ability.
-
-In this work, we combine two-photon excitation into a spinning disk confocal setup to enable deep-tissue penetration and wide-field optical sectioned detection, respectively. The two-photon spinning disk microscope offers ~500 μm and ~100 μm imaging depths in uncleared mouse and *Drosophila* brains, similar to typical single-point detection two-photon microscopy. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to ~50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. More importantly, the protocol works for living brains, so our work paves the way toward *in vivo* functional connectome studies. 
 
 # Principle of single-molecule imaging
 To capture single molecule signal, two conditions must be achieved. ([ref](https://www.nature.com/articles/nprot.2011.336.pdf))
@@ -25,20 +27,20 @@ High SBR & Sparse: bleaching
 STORM:
 High SBR & Sparse: OFF state dominant
 
-## The bleaching in PALM is time-consuming.
+## The bleaching in PALM is time-consuming, especially in spinning disk.
 For PALM, typical bleaching time takes about 0.5-1s, and frame number is about $10^4$ to $10^5$ frames. ([ref](https://pubmed.ncbi.nlm.nih.gov/16902090/)) (2-10 hrs in total)
 
 [PALM video](https://drive.google.com/file/d/1b6W5BdQX6stIgmMg8uTxuXoXUNvQl6vC/view?usp=sharing)
-
+<!---
 ### Why we need that long time?
 [Kaede bleaching dynamics](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2745648/#SD1)
 
-<!---
+
 #### Nature of photobleaching
 Photobleaching probability is virtually independent with spot intensity([ref](https://pubmed.ncbi.nlm.nih.gov/16538628/)). We can say that photobleaching is molecule-wise. 
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274867197_1393980431060470_4938471626513267009_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Q-hU4qZXPxUAX_sXgGG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVL1XzlqiSWLznkELR8FKjjT9m9UOD7egYi8c9MYAAVaeA&oe=624F4592)
 -->
-#### Comparison between widefield bleaching and confocal bleaching
+### Comparison between widefield bleaching and confocal bleaching
 [Data ref](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2745648/#SD1)
 Condition:
 1. Widefield: 40x dry objective (Nikon Plan Fluorite,
@@ -55,7 +57,7 @@ Confocal
 
 $t_{1/2}$: time to bleach 50% starting from 1000 photons/s emission per chromophore 
 
-#### Comparison between spinning disk and widefield bleaching
+### Theory explanation
 [ref](https://pubmed.ncbi.nlm.nih.gov/25076144/)
 
 <!---
@@ -77,7 +79,7 @@ $E$: photon energy
 $P$: power
 $\sigma(\lambda)$: optical cross section per molecule
 -->
-#### Parameters
+#### Parameters (bleaching)
 $P$: power
 $A$: scanning area
 $N$: number of beamlet
@@ -88,12 +90,12 @@ fluorophore. (Let's ignore $k_2$ for a while, i.e., $k_2<<1$)
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274547028_288284690099181_3915019348969566513_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=4ZIGok01GTIAX-153BQ&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKMizv0h-qJT5rv5G8NLwcCkO-Qq3sVo7ytFHUdKX7Q_w&oe=6253D3CE)
 According to this model, triplet state population (in equilibrium) is important!
 
-#### Plugin the parameters
+#### Plugin the parameters (bleaching)
 $P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\frac{4}{3}\pi\omega_1^2\omega_2=8.38*10^{-20}m^3$
 
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275440469_504096897789276_3947634040283139355_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=eJF2f9G2lqAAX_TJR4Z&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIwy5-tUpt8xU6GPIsdiyJ6jBLunJo-BOmCMs3PMMkyUw&oe=62542601)
 
-#### Spinning disk
+##### Spinning disk
 ###### Consider the limiting case 1: the disk is not spinning. 
 1. At the excitation points:$P=20mW\Rightarrow T_{eq,spot}\approx0.63$
 2. Outside the excitation points: $P=0\Rightarrow T_{eq,o}=0$
@@ -106,7 +108,7 @@ Between two limiting cases, $T_{eq}\approx 1.39*10^{-4}$~$3.7*10^{-3}$
 
 $r_{bleach,spin}=k_4*1.39*10^{-4}$~$k_4*3.7*10^{-3}$
 
-#### Widefield
+##### Widefield
 Widefield bleaching rate is the same as the second case of spinning disk. $\Rightarrow r_{bleach,wide}=k_4*3.7*10^{-3}$
 
 >$\Rightarrow$ (Spinnig disk) confocal bleaching time is more than an order of magnitude greater than that for widefield illumination. **Agreed with observation!**
@@ -123,7 +125,7 @@ $t_{1/2, spining}$ and $t_{1/2, wide}$ is dependent on $t_{raw,spinning}$ and $t
 ### Why we need that many frames?
 Nyquist condition. Can be calculated...
 
-## Why choose STORM?
+## STORM is less time consuming.
 >Unlike PALM that has fixed (ON-state) bleaching time, the ON/OFF states dynamics in STORM can be adjusted by external means (chemical condition, excitation power). $\Rightarrow$ **less time consuming.**
 
 ### The photoswitching mechanism (Theory)
@@ -155,9 +157,8 @@ Physical meaning of $\lambda_3$ and $T_{eq}$
 
 $\Rightarrow$ **Blinking rate** is dependent on $\lambda_3$ and labelling density $\rho$.
 
-#### How to calculate blinking rate?
-
-##### Parameters:
+### How to calculate blinking rate?
+#### Parameters:
 $\rho$: labeling density
 $N$: number of beamlet
 $\omega_1, \omega_2$: the radial, the distances from the center of the volume element in the radial and axial direction, respectively, at which the laser intensity has dropped by a factor of $e^2$, assuming a Gaussian beam profile.
@@ -168,13 +169,6 @@ $P$: power of total beamlets$\Rightarrow\frac{P}{N}$: power of individual beamle
 $A$: scanning area
 $\lambda_3$: the rate at which there is a population buildup in the triplet state
 $T_{eq}$: relative triplet state population in equilibrium
-
-#### How to determine the labeling density?
-Let's assume the labeling density $\rho$ is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
-$d=1,5,10,20,50,100nm$
-![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275395158_3097633807132677_5057225665692364082_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=gcFrQW0ezvgAX9VmzO4&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLccVTktG1s5lQiRkNarqzXR4MKJwHA3JUxl3C3rmVMkA&oe=6251BBD4)
-
-
 #### Plugin the parameters
 $P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\frac{4}{3}\pi\omega_1^2\omega_2=8.38*10^{-20}m^3$
 
@@ -192,12 +186,10 @@ $P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\
 
 Consider pulsed case $\Rightarrow$ probably will be saturated. [...]
 
-#### How many molecules do you need?
-[Direct STORM](https://www.nature.com/articles/nprot.2011.336)
-With an aim of 20-nm resolution, a fluorophore must be localized at least every 10 nm. In 2D, this means in $1\mu m^2$, there must be at least $(\frac{1\mu m}{10 nm})^2\approx10^4$ moleceles. In a diffraction-limited spot of size $250 nm$, there must be $600$ molecules but only one molecule can be in the ON state. This means that the **OFF state lifetime** should be at least 600 times longer than the **ON state life time**.  
-![ON & OFF state](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274021654_1122525205211549_2958359896031346084_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Jqp_p3eLwf8AX-M2w7R&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIEcNA86NEAROLePkSPH_oNOhvVeXgNP87UoGMLaraecg&oe=62400AC2)
-[...]
-
+### How to determine the labeling density?
+Let's assume the labeling density $\rho$ is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
+$d=1,5,10,20,50,100nm$
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275395158_3097633807132677_5057225665692364082_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=gcFrQW0ezvgAX9VmzO4&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLccVTktG1s5lQiRkNarqzXR4MKJwHA3JUxl3C3rmVMkA&oe=6251BBD4)
 
 #### Rh6G photophysical properties (Case study)
 
@@ -212,25 +204,9 @@ $\frac{P}{\pi\omega_1^2}$ needs to be expressed as photons per square meter per 
 #### DsRed photophysical properties (Case study)
 
 #### Kaede photophysical properties (Case study)
-[Photophysical properties of Kaede](https://ueaeprints.uea.ac.uk/id/eprint/53399/1/2015AddisonKPhD.pdf)
-![Characterization of the Photoconversion on Reaction of the Fluorescent Protein Kaede on the Single-Molecule Level](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274309488_253777436833989_1708364374648674418_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=p2HOGooN3joAX-Sj37B&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKuiFvSnQR6r_DNQu2sVH-9SV0d8IpCh5CpHH5qkuy-Cw&oe=6246EF1C)
-![Han-Yuan's journal](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273573200_376756070946666_2126222706031454664_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=WhExxP47MtsAX9VbkJB&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJ5xEjGf0X50k3ia8h9Z9K0Cu-IWP-o7eg8-K5rlBelRQ&oe=6245026A)
-You can clearly see that the blinking dynamics is about submilliseconds. 250 ms exposure time is too long for resolving individual molecule. 
-[...]
-
 ##### Intensity dependence of ACF (The most important application)
 Here is the experimental results of ACF curve of red form Kaede when varying the excitation intensity (from $2.5$ to $78\frac{kW}{cm^2}$). 
 
 After fitting with the model
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275184263_632338294498567_2914250142237772510_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kwGErwIEvSAAX9wpAq6&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKUy8xS-TacV-8hBQtIsBIXUMJeuHYSrtyWHFA3KKByRg&oe=624F8332), where $\tau_i$ is the rate, and $F_i$ is the fraction, we have two blinking dynamics (i=2) with $\tau_1=6.5$ - $32$kHz(153$\mu s$-30$\mu s$), $F_1\approx30\%$, and $\tau_2=1.3$kHz - $10$kHz(769$\mu s$-100$\mu s$), $F_2\approx20\%$.
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273648558_300396522012577_1102684933084334318_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=z9VyP9SEK5gAX-RrYIA&tn=kmMc2ol6ujtRzeuG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLNAO7arsvHyt49Lwihhrm-Zxc1-WrLrwhwJqIOy_8e4Q&oe=6248DEB8)
-
-### Related to speed issue: photon number
-With neglegible fluorescent background and detection noise, the localization precision is $\mu\approx\frac{\sigma}{N}$, where $\sigma$ is the size of PSF, and $N$ is the number of photon detected. In typical PALM or FPALM, the frame rate is about 10-25 Hz to accomodate for the bleaching time of fluorophores. 
-
-Papers:  
-[3D STED](https://drive.google.com/file/d/15G1G0A-zgt5GrhK4TLFYyHvQrMD7oiez/view?usp=sharing)  
-[Polarization-resolved two photon spinning disk](https://drive.google.com/file/d/1I7E_GrQpJe9I9jCjw4fikekqE2fGU0fL/view?usp=sharing)  
-[Drosophila brain simulation](https://neurokernel.github.io/about.html)：羅中泉老師。  
-[Drosophila as model animal1](https://www.jneurosci.org/content/33/45/17560), [2](https://pubmed.ncbi.nlm.nih.gov/20383202/)  
-[Drosophila larvae imaging](https://elifesciences.org/articles/15567)
