@@ -12,6 +12,18 @@ Super-resolution imaging avails the imaging resolution down to tens of nanometer
 
 In this work, we combine two-photon excitation into a spinning disk confocal setup to enable deep-tissue penetration and wide-field optical sectioned detection, respectively. The two-photon spinning disk microscope offers ~500 μm and ~100 μm imaging depths in uncleared mouse and *Drosophila* brains, similar to typical single-point detection two-photon microscopy. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to ~50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. More importantly, the protocol works for living brains, so our work paves the way toward *in vivo* functional connectome studies. 
 
+# Principle of single-molecule imaging
+To capture single molecule signal, two conditions must be achieved. ([ref](https://www.nature.com/articles/nprot.2011.336.pdf))
+>1. High enough contrast
+>2. Only one ON-state molecule in the diffraction-limited region
+
+##### AIM: High SBR and sparse
+
+PALM: 
+High SBR & Sparse: bleaching
+
+STORM:
+High SBR & Sparse: OFF state dominant
 
 ## The bleaching in PALM is time-consuming.
 For PALM, typical bleaching time takes about 0.5-1s, and frame number is about $10^4$ to $10^5$ frames. ([ref](https://pubmed.ncbi.nlm.nih.gov/16902090/)) (2-10 hrs in total)
@@ -39,7 +51,7 @@ Widefield
 Confocal
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274536284_471719157983779_5648725458810395149_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=fbyPj7FNO7IAX_Gs37l&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJzvSvQh0uj9zC8clYIsJA_GevYZ6QRYWLkmTZkPeCQNw&oe=622B0812)
 
-#### How to systematically compare the time needed for bleaching?
+#### Characterization function for bleaching dynamics.
 
 For widefield: $X=\frac{F}{A}N(\lambda)\sigma(\lambda)\Delta\lambda$
 
@@ -67,19 +79,20 @@ $t_{raw}$: time to drop to 50% of the initial intensity (measured)
 
 Let's try to consider a typical case where the average powers of spinning confocal and widefield are the same. 
 $\Rightarrow X_{wide}=X_{spinning}$, $Q$ is the same for identical molecules.
+$t_{1/2, spining}$ and $t_{1/2, wide}$ is dependent on $t_{raw,spinning}$ and $t_{raw,wide}$, respectively. 
 
->$t_{1/2, spining}$ and $t_{1/2, wide}$ is dependent on $t_{raw,spinning}$ and $t_{raw,wide}$, respectively. **In most cases,  the calculated $t_{1/2}$ for confocal bleaching is more than an order of magnitude greater than that for widefield illumination.** ([ref](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7191/719105/Evaluating-and-improving-the-photostability-of-fluorescent-proteins/10.1117/12.814684.full?SSO=1))
+>In most cases,  the calculated $t_{1/2}$ for confocal bleaching is more than an order of magnitude greater than that for widefield illumination. ([ref](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7191/719105/Evaluating-and-improving-the-photostability-of-fluorescent-proteins/10.1117/12.814684.full?SSO=1))
 
+
+
+Why??? Maybe due to the illumination geometry (scanning nature of confocal)...
 ### Why we need that many frames?
 Nyquist condition. Can be calculated...
 
 ## Why choose STORM?
->Unlike PALM that has fixed ON-state bleaching time, the ON/OFF states dynamics in dSTORM can be adjusted by external means. 
-To capture single molecule signal, two conditions must be achieved. ([ref](https://www.nature.com/articles/nprot.2011.336.pdf))
->1. High enough contrast
->2. Only one ON-state molecule in the diffraction-limited region
+>Unlike PALM that has fixed (ON-state) bleaching time, the ON/OFF states dynamics in STORM can be adjusted by external means (chemical condition, excitation power). $\Rightarrow$ **less time consuming.**
 
-#### The photoswitching mechanism (Theory)
+### The photoswitching mechanism (Theory)
 ###### 打561 Kaede會不會回到488的態? 也沒關係，還是在dark state
 A three-state model. Using this model can explain why there is fast blinking.  
 
@@ -106,20 +119,51 @@ Relation between $T_{eq}$ and intensity
 Physical meaning of $\lambda_3$ and $T_{eq}$
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275515700_964634747389797_4730825092774499123_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=LvZyb4YUKoIAX8JpB6u&_nc_ht=scontent-tpe1-1.xx&oh=03_AVK9jDZdMLFBA5XClgdRWHZKVnJIOe-oQVzm3mytfI2_xA&oe=6252E490)
 
-$\Rightarrow$ **Blinking rate** is dependent on $\lambda_3$ and labelling density.
+$\Rightarrow$ **Blinking rate** is dependent on $\lambda_3$ and labelling density $\rho$.
 
-[...]
+#### How to calculate blinking rate?
 
-### How many molecules do you need?
+##### Parameters:
+$\rho$: labeling density
+$N$: number of beamlet
+$\omega_1, \omega_2$: the radial, the distances from the center of the volume element in the radial and axial direction, respectively, at which the laser intensity has dropped by a factor of $e^2$, assuming a Gaussian beam profile.
+$V_0=\frac{4}{3}\pi\omega_1^2\omega_2$: volume of one excitation beamlet
+$NV_0\rho=\frac{NV_0}{d^3}$: total number of molecules in the excitation volume.
+
+$P$: power of total beamlets$\Rightarrow\frac{P}{N}$: power of individual beamlets
+$A$: scanning area
+$\lambda_3$: the rate at which there is a population buildup in the triplet state
+$T_{eq}$: relative triplet state population in equilibrium
+
+#### How to determine the labeling density?
+Let's assume the labeling density $\rho$ is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
+$d=1,5,10,20,50,100nm$
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275395158_3097633807132677_5057225665692364082_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=gcFrQW0ezvgAX9VmzO4&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLccVTktG1s5lQiRkNarqzXR4MKJwHA3JUxl3C3rmVMkA&oe=6251BBD4)
+
+
+#### Plugin the parameters
+$P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\frac{4}{3}\pi\omega_1^2\omega_2=8.38*10^{-20}m^3$
+
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275440469_504096897789276_3947634040283139355_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=eJF2f9G2lqAAX_TJR4Z&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIwy5-tUpt8xU6GPIsdiyJ6jBLunJo-BOmCMs3PMMkyUw&oe=62542601)
+###### Consider the limiting case 1: the disk is not spinning. 
+1. At the excitation points:$P=20mW\Rightarrow T_{eq,spot}\approx0.63,\lambda_{3,spot}=1.34(1/\mu s)$ 
+2. Outside the excitation points: $P=0\Rightarrow T_{eq,o}=0,\lambda_{3,o}=0.5(1/\mu s)$
+3. $T_{eq}=T_{eq,spot}*\frac{N\pi\omega_1^2}{A}+T_{eq,o}*\frac{A-N\pi\omega_1^2}{A}=0.63*\frac{100*\pi*(0.2\mu m)^2}{300\mu m*300\mu m}=1.39*10^{-4}$
+4. $\lambda_3=\lambda_{3,spot}*\frac{N\pi\omega_1^2}{A}+\lambda_{3,o}*\frac{A-N\pi\omega_1^2}{A}\approx 0.5$
+
+###### Consider the limiting case 2: the disk spins very fast $\Rightarrow$ can be considered as a uniform widefield light source. 
+1. $P_{eff}=P*\frac{N\pi\omega_1^2}{A}=2.8\mu W\Rightarrow T_{eq}\approx0.0037, \lambda_3\approx0.5(1/\mu s)$
+
+> Between two limiting cases, $T_{eq}\approx 1.39*10^{-4}$~$0.0037, \lambda_3\approx 0.5(1/\mu s)$
+
+Consider pulsed case $\Rightarrow$ probably will be saturated. [...]
+
+#### How many molecules do you need?
 [Direct STORM](https://www.nature.com/articles/nprot.2011.336)
 With an aim of 20-nm resolution, a fluorophore must be localized at least every 10 nm. In 2D, this means in $1\mu m^2$, there must be at least $(\frac{1\mu m}{10 nm})^2\approx10^4$ moleceles. In a diffraction-limited spot of size $250 nm$, there must be $600$ molecules but only one molecule can be in the ON state. This means that the **OFF state lifetime** should be at least 600 times longer than the **ON state life time**.  
 ![ON & OFF state](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274021654_1122525205211549_2958359896031346084_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Jqp_p3eLwf8AX-M2w7R&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIEcNA86NEAROLePkSPH_oNOhvVeXgNP87UoGMLaraecg&oe=62400AC2)
 [...]
 
-### How to determine the labeling density?
-Let's assume the labeling density is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
-$d=1,5,10,20,50,100nm$
-![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275395158_3097633807132677_5057225665692364082_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=gcFrQW0ezvgAX9VmzO4&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLccVTktG1s5lQiRkNarqzXR4MKJwHA3JUxl3C3rmVMkA&oe=6251BBD4)
 
 #### Rh6G photophysical properties (Case study)
 
