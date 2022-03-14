@@ -12,31 +12,20 @@ Super-resolution imaging avails the imaging resolution down to tens of nanometer
 
 In this work, we combine two-photon excitation into a spinning disk confocal setup to enable deep-tissue penetration and wide-field optical sectioned detection, respectively. The two-photon spinning disk microscope offers ~500 μm and ~100 μm imaging depths in uncleared mouse and *Drosophila* brains, similar to typical single-point detection two-photon microscopy. Through integration of photo-activated localization microscopy (PALM), which also reduces photodamage of the tissue, we achieve resolution down to ~50 nm in an intact *Drosophila* brain, pushing to the limit of imaging depth and resolution. More importantly, the protocol works for living brains, so our work paves the way toward *in vivo* functional connectome studies. 
 
-#### 打561 Kaede會不會回到488的態? 也沒關係，還是在dark state
 
-## Why is blinking necessary?
+## The bleaching in PALM is time-consuming.
+For PALM, typical bleaching time takes about 0.5-1s, and frame number is about $10^4$ to $10^5$ frames. ([ref](https://pubmed.ncbi.nlm.nih.gov/16902090/)) (2-10 hrs in total)
 
-### The bleaching in PALM is time-consuming.
-Unlike PALM that has fixed ON-state bleaching time, the ON/OFF states dynamics in dSTORM can be adjusted by external means. For typical bleaching condition, it takes about []...]
-
-### PALM 用一般的CW 405
-refer to [nature protocol](https://www.nature.com/articles/nprot.2011.336.pdf)
-To capture single molecule signal, two conditions must be achieved.
-1. High enough contrast
-1. Only one ON-state molecule in the diffraction-limited region
-
-Let's do some calculations. 
 [PALM video](https://drive.google.com/file/d/1b6W5BdQX6stIgmMg8uTxuXoXUNvQl6vC/view?usp=sharing)
-
-The frame rate is about 0.5s to 1s, and frame number is about $10^4$ to $10^5$ frames. ([ref](https://pubmed.ncbi.nlm.nih.gov/16902090/))
 
 ### Why we need that long time?
 [Kaede bleaching dynamics](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2745648/#SD1)
 
+<!---
 #### Nature of photobleaching
 Photobleaching probability is virtually independent with spot intensity([ref](https://pubmed.ncbi.nlm.nih.gov/16538628/)). We can say that photobleaching is molecule-wise. 
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274867197_1393980431060470_4938471626513267009_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Q-hU4qZXPxUAX_sXgGG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVL1XzlqiSWLznkELR8FKjjT9m9UOD7egYi8c9MYAAVaeA&oe=624F4592)
-
+-->
 #### Comparison between widefield bleaching and confocal bleaching
 [Data ref](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2745648/#SD1)
 Condition:
@@ -45,27 +34,53 @@ NA = 0.85), metal halide illumination source
 1. Confocal: 40x oil immersion objective (Olympus UPlan Apo, NA = 1.00), 543-nm laser
 1. Laser intensity = ~475 $mW/cm^2$ power (Widefield), 100$\mu W$ (Confocal)
 
-
 Widefield
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274294032_701256954381925_919571328593342760_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=DnXi9i0ZEKoAX_10cOT&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLrZYuLvFOu3AE0rlvdSYvbJQJhK0_BuGpNYTi9SfPI7A&oe=624F7194)
 Confocal
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274536284_471719157983779_5648725458810395149_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=fbyPj7FNO7IAX_Gs37l&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJzvSvQh0uj9zC8clYIsJA_GevYZ6QRYWLkmTZkPeCQNw&oe=622B0812)
 
-#### How to calculate the time needed for bleaching?
-[Here is the answer](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7191/719105/Evaluating-and-improving-the-photostability-of-fluorescent-proteins/10.1117/12.814684.full?SSO=1).
+#### How to systematically compare the time needed for bleaching?
 
-For widefiled: $X=\frac{E}{A}L(\lambda)F(\lambda)D(\lambda)\sigma(\lambda)\Delta\lambda$
+For widefield: $X=\frac{F}{A}N(\lambda)\sigma(\lambda)\Delta\lambda$
+
+###### Assume single-layer sample.
+
+$X$: rate of excitation (photons/s)
+$F$: amplitude factor
+$A$: illumination area
+$N(\lambda)$: photon numbers per 1nm bandwidth
+$\sigma(\lambda)$: optical cross section per molecule
+
 For confocal: $X=\Phi\sigma(\lambda)=\frac{P}{EA}\sigma(\lambda)$
+$X$: rate of excitation (photons/s)
+$\Phi$: average photon flux over scanned area
+$A$: illumination area
+$E$: photon energy
+$P$: power
+$\sigma(\lambda)$: optical cross section per molecule
+
+$t_{1/2}=\frac{t_{raw}XQ}{1000photons/s}$
+$t_{1/2}$: time to bleach 50% starting from 1000 photons/s emission per chromophore 
+$Q$: quantum efficiency
+$t_{raw}$: time to drop to 50% of the initial intensity (measured)
+
+
+Let's try to consider a typical case where the average powers of spinning confocal and widefield are the same. 
+$\Rightarrow X_{wide}=X_{spinning}$, $Q$ is the same for identical molecules.
+
+>$t_{1/2, spining}$ and $t_{1/2, wide}$ is dependent on $t_{raw,spinning}$ and $t_{raw,wide}$, respectively. **In most cases,  the calculated $t_{1/2}$ for confocal bleaching is more than an order of magnitude greater than that for widefield illumination.** ([ref](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7191/719105/Evaluating-and-improving-the-photostability-of-fluorescent-proteins/10.1117/12.814684.full?SSO=1))
 
 ### Why we need that many frames?
+Nyquist condition. Can be calculated...
 
-[...]
-### How many molecules do you need?
-[Direct STORM](https://www.nature.com/articles/nprot.2011.336)
-With an aim of 20-nm resolution, a fluorophore must be localized at least every 10 nm. In 2D, this means in $1\mu m^2$, there must be at least $(\frac{1\mu m}{10 nm})^2\approx10^4$ moleceles. In a diffraction-limited spot of size $250 nm$, there must be $600$ molecules but only one molecule can be in the ON state. This means that the OFF state lifetime should be at least 600 times longer than the ON state life time.  
-![ON & OFF state](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274021654_1122525205211549_2958359896031346084_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Jqp_p3eLwf8AX-M2w7R&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIEcNA86NEAROLePkSPH_oNOhvVeXgNP87UoGMLaraecg&oe=62400AC2)
+## Why choose STORM?
+>Unlike PALM that has fixed ON-state bleaching time, the ON/OFF states dynamics in dSTORM can be adjusted by external means. 
+To capture single molecule signal, two conditions must be achieved. ([ref](https://www.nature.com/articles/nprot.2011.336.pdf))
+>1. High enough contrast
+>2. Only one ON-state molecule in the diffraction-limited region
 
 #### The photoswitching mechanism (Theory)
+###### 打561 Kaede會不會回到488的態? 也沒關係，還是在dark state
 A three-state model. Using this model can explain why there is fast blinking.  
 
 ![Three state model](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274254602_509407327286982_4285864595330128796_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PnSnIKX4qHAAX_te7v0&_nc_oc=AQk0Qe9OIMObcV-zj2Hi0inw2RXwQmoMCAQ1aBzjqbyDCiYuIqpISI0xffLo6J_n-18&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLD4UiBliLSvw4tzKnsA4pm-gcXVdWx7UNizzoUrpuiuQ&oe=624FEEA4)
@@ -83,10 +98,23 @@ Combining the following effects to autocorrelation function:
 - molecules entering and leaving triplet state
 We have our autocorrelation function
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274656221_370807598223761_1386202177098644304_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=33g4xqinGeoAX8w81LX&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVI03IdCqiuI_4Sf88K_gmt68LJOY7ctbtjk7CUPpTCAhw&oe=6250A98A)
-A typical relation between $\lambda_3$(related to flickering rate) and intensity.
+A typical relation between $\lambda_3$(the rate at which there is a population buildup in the triplet state) and intensity.
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274652847_5168091999896421_1049625651085026328_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PeWX2R0j-bEAX-oltq3&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIFIzqhBILNuxOd2LnCLmNQdNVbRlczL6Lqcqo_JEcYiw&oe=624DFFA2)
 Relation between $T_{eq}$ and intensity
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274614827_658555828802825_3630722350239444723_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=tndGkWQwO0MAX-vrJlZ&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJvQ_nGmH-1cNQ7OYLVHLf3486ihFG16xePEZN7mssYMw&oe=624FE001)
+
+Physical meaning of $\lambda_3$ and $T_{eq}$
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275515700_964634747389797_4730825092774499123_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=LvZyb4YUKoIAX8JpB6u&_nc_ht=scontent-tpe1-1.xx&oh=03_AVK9jDZdMLFBA5XClgdRWHZKVnJIOe-oQVzm3mytfI2_xA&oe=6252E490)
+
+$\Rightarrow$ **Blinking rate** is dependent on $\lambda_3$ and labelling density.
+
+[...]
+
+### How many molecules do you need?
+[Direct STORM](https://www.nature.com/articles/nprot.2011.336)
+With an aim of 20-nm resolution, a fluorophore must be localized at least every 10 nm. In 2D, this means in $1\mu m^2$, there must be at least $(\frac{1\mu m}{10 nm})^2\approx10^4$ moleceles. In a diffraction-limited spot of size $250 nm$, there must be $600$ molecules but only one molecule can be in the ON state. This means that the **OFF state lifetime** should be at least 600 times longer than the **ON state life time**.  
+![ON & OFF state](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274021654_1122525205211549_2958359896031346084_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Jqp_p3eLwf8AX-M2w7R&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIEcNA86NEAROLePkSPH_oNOhvVeXgNP87UoGMLaraecg&oe=62400AC2)
+[...]
 
 ### How to determine the labeling density?
 Let's assume the labeling density is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
@@ -100,6 +128,8 @@ After several fitting procedures, we have
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274325058_926017408076972_7050144123343753985_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=2BW97AfH0y0AX89R9Bx&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLS3lFJTBFNkAqN1zHd1ecB9HOyLZ3PVWzvs0ANzAyycA&oe=624D1A14)
 
 We can also obtain $k_{12}=\sigma_{exc}\times \frac{P}{\pi\omega_1^2}$
+
+$\frac{P}{\pi\omega_1^2}$ needs to be expressed as photons per square meter per second. $P=P_{origin}*2.58*10^{18}$
 
 #### DsRed photophysical properties (Case study)
 
