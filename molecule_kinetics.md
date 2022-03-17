@@ -184,6 +184,23 @@ $P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\
 
 > Between two limiting cases, $T_{eq}\approx 1.39*10^{-4}$~$0.0037, \lambda_3\approx 0.5(1/\mu s)$
 
+###### Case 3: pixel dwell time$\approx0.1\times\frac{1}{k_{23}}=10^{-7}s=0.1\mu s$
+###### Case 4: pixel dwell time$\approx\frac{1}{k_{23}}=10^{-6}s=1\mu s$  
+###### Case 5: pixel dwell time$\approx10\times\frac{1}{k_{23}}=10^{-5}s=10\mu s$ 
+
+Current state of the art spinning disk rotates 15,000 rpm.[ref1](https://www.photometrics.com/learn/spinning-disk-confocal-microscopy/the-evolution-of-spinning-disk-confocal-microscopy-v2)
+The Nipkow disk is located in a conjugate image plane and a **partial rotation** of the disk scans the specimen with approximately 1000 individual light beams that can traverse the entire image plane in less than a millisecond.
+[ref2](https://zeiss-campus.magnet.fsu.edu/articles/spinningdisk/introduction.html)
+Suppose that there are 2048 by 2048 pixels. 
+Then each beam passes $2048*2048/1000=4194pxls$ in $1$ ms. Hence, pixel dwell time $\approx 0.23 \mu s$
+Visually,
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275641025_672701293877298_2925550402700425372_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=6Lt6Jm0wYb0AX9jGri_&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJy6iECuKrObMnXLsQ6vb75h8cz0a-NC24DGG_tDZBZNA&oe=62594369)
+
+>Hence current spinning disk can be thought as Case 3.
+
+During this short pulse ($\approx0.23\mu s$), there won't be any triplet state accumulate.
+[need a temporal dynamics... matrix solution!!]
+
 Consider pulsed case $\Rightarrow$ probably will be saturated. [...]
 
 ### How to determine the labeling density?
