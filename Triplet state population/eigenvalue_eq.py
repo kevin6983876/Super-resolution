@@ -22,19 +22,28 @@ def norm_X_t(X_0, P_origin,t):
 
 T_eq1 = []
 T_eq2 = []
+#T_eq3 = []
 
-time = np.linspace(1,100000,100000)
-for i in range(200):
+time = np.linspace(1,10000,10000)
+for i in range(100):
     T_eq1.append(norm_X_t(np.array([1,0,0]),0.00002,0.000000001*i)[2])
-    T_eq2.append(norm_X_t(np.array([1,0,0]),0.000002,0.000000001*i)[2])
+#for i in range(1000):
+#    T_eq2.append(norm_X_t(np.array([1,0,0]),0.00002,0.000000001*i)[2])
+#for i in range(10000):
+#    T_eq3.append(norm_X_t(np.array([1,0,0]),0.00002,0.000000001*i)[2])
 Turn_off1 = norm_X_t(np.array([1,0,0]),0.00002,0.000000199)
-Turn_off2 = norm_X_t(np.array([1,0,0]),0.000002,0.000000199)
-for i in range(99800):
+#Turn_off2 = norm_X_t(np.array([1,0,0]),0.00002,0.000001999)
+#Turn_off3 = norm_X_t(np.array([1,0,0]),0.00002,0.000019999)
+for i in range(9900):
     T_eq1.append(norm_X_t(Turn_off1,0,0.000000001*i)[2])
-    T_eq2.append(norm_X_t(Turn_off2,0.000002,0.000000001*i)[2])
+#for i in range(99000):
+#    T_eq2.append(norm_X_t(Turn_off2,0,0.000000001*i)[2])
+#for i in range(90000):
+#    T_eq3.append(norm_X_t(Turn_off3,0,0.000000001*i)[2])
 import matplotlib.pyplot as plt
-plt.plot(time/1000,T_eq1, label='Spinning disk')
-plt.plot(time/1000,T_eq2, label='Widefield')
+plt.plot(time/1000,T_eq1, label='0.1us dwell time')
+#plt.plot(time/1000,T_eq2, label='1us dwell time')
+#plt.plot(time/1000,T_eq3, label='10us dwell time')
 plt.legend(loc='best')
 plt.ylabel("Relative triplet state population")
 plt.xlabel("time(us)")

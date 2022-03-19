@@ -1,17 +1,33 @@
 # Table of Contents
-1. [Principle of single-molecule imaging](#Principle-of-single-molecule-imaging)
-   1. [AIM](#aim-high-sbr-and-sparse)
-2. [The bleaching in PALM is time-consuming, especially in spinning disk](#The-bleaching-in-PALM-is-time-consuming)
-   1. [Comparison between confocal and widefield](#comparison-between-widefield-bleaching-and-confocal-bleaching)
-   2. [Theory explanation](#theory-explanation)
-      1. [Parameter](#parametersbleaching)
-      2. [Plugin parameters](#plugin-the-parameters-bleaching)
-3. [STORM is less time consuming](#storm-is-less-time-consuming)
-   1. [The photoswitching mechanism](#the-photoswitching-mechanism-theory)
-   2. [How to calculate blinking rate?](#how-to-calculate-blinking-rate)
-      1. [Parameters](#parameters)
-      2. [Plugin parameters](#plugin-the-parameters)
-   3. [How to determine the labeling density](#how-to-determine-the-labeling-density)
+- [Table of Contents](#table-of-contents)
+- [Principle of single-molecule imaging](#principle-of-single-molecule-imaging)
+        - [AIM: High SBR and sparse](#aim-high-sbr-and-sparse)
+  - [The bleaching in PALM is time-consuming, especially in spinning disk.](#the-bleaching-in-palm-is-time-consuming-especially-in-spinning-disk)
+    - [Comparison between widefield bleaching and confocal bleaching](#comparison-between-widefield-bleaching-and-confocal-bleaching)
+    - [Theory explanation](#theory-explanation)
+      - [Parameters (bleaching)](#parameters-bleaching)
+      - [Plugin the parameters (bleaching)](#plugin-the-parameters-bleaching)
+        - [Spinning disk](#spinning-disk)
+          - [Consider the limiting case 1: the disk is not spinning.](#consider-the-limiting-case-1-the-disk-is-not-spinning)
+          - [Consider the limiting case 2: the disk spins very fast $\Rightarrow$ can be considered as a uniform widefield light source.](#consider-the-limiting-case-2-the-disk-spins-very-fast-rightarrow-can-be-considered-as-a-uniform-widefield-light-source)
+        - [Widefield](#widefield)
+    - [Why we need that many frames?](#why-we-need-that-many-frames)
+  - [STORM is less time consuming.](#storm-is-less-time-consuming)
+    - [The photoswitching mechanism (Theory)](#the-photoswitching-mechanism-theory)
+          - [打561 Kaede會不會回到488的態? 也沒關係，還是在dark state](#打561-kaede會不會回到488的態-也沒關係還是在dark-state)
+    - [How to calculate blinking rate?](#how-to-calculate-blinking-rate)
+      - [Parameters:](#parameters)
+      - [Comparison: different scanning speed of spinning disk](#comparison-different-scanning-speed-of-spinning-disk)
+          - [Consider the limiting case 1: the disk is not spinning.](#consider-the-limiting-case-1-the-disk-is-not-spinning-1)
+          - [Consider the limiting case 2: the disk spins very fast $\Rightarrow$ can be considered as a uniform widefield light source.](#consider-the-limiting-case-2-the-disk-spins-very-fast-rightarrow-can-be-considered-as-a-uniform-widefield-light-source-1)
+          - [Case 3-5: pixel dwell time (PDT)$\approx(0.1,1,10)\times\frac{1}{k_{23}}=10^{-7}s=0.1,1,10\mu s$](#case-3-5-pixel-dwell-time-pdtapprox01110timesfrac1k_2310-7s01110mu-s)
+          - [Case 6: real case](#case-6-real-case)
+      - [Comparison: spinning disk vs widefield](#comparison-spinning-disk-vs-widefield)
+    - [How to determine the labeling density?](#how-to-determine-the-labeling-density)
+      - [Rh6G photophysical properties (Case study)](#rh6g-photophysical-properties-case-study)
+      - [DsRed photophysical properties (Case study)](#dsred-photophysical-properties-case-study)
+      - [Kaede photophysical properties (Case study)](#kaede-photophysical-properties-case-study)
+        - [Intensity dependence of ACF (The most important application)](#intensity-dependence-of-acf-the-most-important-application)
 
 
 # Principle of single-molecule imaging
@@ -169,7 +185,7 @@ $P$: power of total beamlets$\Rightarrow\frac{P}{N}$: power of individual beamle
 $A$: scanning area
 $\lambda_3$: the rate at which there is a population buildup in the triplet state
 $T_{eq}$: relative triplet state population in equilibrium
-#### Plugin the parameters
+#### Comparison: different scanning speed of spinning disk 
 $P=20mW, A=300\mu m*300\mu m, N=1000, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\frac{4}{3}\pi\omega_1^2\omega_2=8.38*10^{-20}m^3$
 
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275440469_504096897789276_3947634040283139355_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=eJF2f9G2lqAAX_TJR4Z&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIwy5-tUpt8xU6GPIsdiyJ6jBLunJo-BOmCMs3PMMkyUw&oe=62542601)
@@ -184,14 +200,22 @@ $P=20mW, A=300\mu m*300\mu m, N=1000, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=
 
 > Between two limiting cases, $T_{eq}\approx 5.5*10^{-5}$~$0.035, \lambda_3\approx 0.5(1/\mu s)$
 
-###### Case 3: pixel dwell time$\approx0.1\times\frac{1}{k_{23}}=10^{-7}s=0.1\mu s$
-###### Case 4: pixel dwell time$\approx\frac{1}{k_{23}}=10^{-6}s=1\mu s$  
-###### Case 5: pixel dwell time$\approx10\times\frac{1}{k_{23}}=10^{-5}s=10\mu s$ 
+###### Case 3-5: pixel dwell time (PDT)$\approx(0.1,1,10)\times\frac{1}{k_{23}}=10^{-7}s=0.1,1,10\mu s$
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/276150420_1122083111859682_5446280546415537617_n.png?_nc_cat=101&ccb=1-5&_nc_sid=ae9488&_nc_ohc=WZswgvgkWWsAX8DqDe7&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIxQHo1I8vZurU1TooDGx1YmXyEpTL50PLlRu7R-VM2kQ&oe=625A9330)
+> It seems that the triplet state population is well-accumulated in the case of larger PDT ($PDT=10\mu s$). However, it should be noted that such larger PDT is resulted from slower scanning speed of spinning disk. To obtain a$10\mu s$-PDT, one should reduce the scanning speed to $120rpm$. Equivalently, every pixel experiences a $10\mu s$ excitation followed by $T=0.5 s$ non-excitation. The average triplet state population is $\int_0^{PDT}Triplet(t)dt\times \frac{1}{T}\approx\frac{0.25*10\mu s}{0.5s}=5*10^{-6}$.
+>- **Analysis** Based on current Nipkow disk configuration, a partial rotation (precisely speaking, a $30\degree$ rotation [[ref2](https://zeiss-campus.magnet.fsu.edu/articles/spinningdisk/introduction.html)]) of the disk can traverse the entire image plane (with $1000$ light beams simultaneously in the FOV). If the full-round rotation time is $T$, then the scanning time would be $T*\frac{30\degree}{360\degree}=\frac{T}{12}$. Suppose the camera has 2048 by 2048 pixels. Then each beam passes $2048*2048/1000=4194pxls$ in $\frac{T}{12}$ ms. Hence,  $PDT=\frac{T}{12*4194} = \frac{T}{50328}$. In the case of $PDT=10\mu s$, $T = 10\mu s\times 50328=0.5s$. $\Rightarrow RPM = 120$
+>- Average triplet state population: $\int_0^{PDT}Triplet(t)dt\times \frac{1}{T}$
+>
+>Comparatively, if $PDT=0.1\mu s$, $T = 0.1\mu s\times 50328=0.005s$. The average triplet state population is $\int_0^{PDT}Triplet(t)dt\times \frac{1}{T}\approx\frac{0.025*2\mu s}{0.005s}=1*10^{-5}$.
 
-Current state of the art spinning disk rotates 15,000 rpm.[ref1](https://www.photometrics.com/learn/spinning-disk-confocal-microscopy/the-evolution-of-spinning-disk-confocal-microscopy-v2)
-The Nipkow disk is located in a conjugate image plane and a **partial rotation** of the disk scans the specimen with approximately 1000 individual light beams that can traverse the entire image plane in less than a millisecond.
-[ref2](https://zeiss-campus.magnet.fsu.edu/articles/spinningdisk/introduction.html)
-Suppose that there are 2048 by 2048 pixels. 
+**Conclusion:** Varying rotation speed, i.e. varing the pixel dwell time, does not change average triplet state population significantly since pixel dwell time and scanning speed are **coupled** in the spinning disk configuration. 
+
+<!---
+>- **Covering ratio(CR)**$\vcentcolon=\frac{T_{exci}}{T_{non-exci}}$. CR indicates how much percentage of time that laser is on a certain pixel. 
+--->
+
+###### Case 6: real case
+Current state of the art spinning disk rotates 5,000 rpm. The Nipkow disk is located in a conjugate image plane and a $30\degree$-rotation of the disk scans the specimen with approximately 1000 individual light beams that can traverse the entire image plane in $1$ millisecond.
 Then each beam passes $2048*2048/1000=4194pxls$ in $1$ ms. Hence, pixel dwell time $\approx 0.23 \mu s$ And each beam has power $20mW/1000=20\mu W$ 
 Hence the intensity is $\frac{20\mu W}{\pi\omega_1^2}\approx 11kW/cm^2$ (Normally, widefield intenisty is about $2kW/cm^2$, an order smaller.)
 Visually,
@@ -205,17 +229,14 @@ After calculation, $T(t)$ is as follows and reaches $\approx0.0026$ at $0.2\mu s
 
 > Hence, the triplet development is not sufficient during this short time period. 
 
->**Final comparison**: spinning disk vs widefield, condition: 
+#### Comparison: spinning disk vs widefield
+Condition: 
 $I_{spinning}=11kW/cm^2$
 $I_{wide}=1.1kW/cm^2$
 Spinning disk: $0.2\mu s$ pulse followed by $>100\mu s$ rest per pixel
 Widefield: continuous illumination
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275035014_361212279065172_8037043985315838394_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=WOKFWv3BxuEAX83l5TZ&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLs7NfR2Q1I8p9WCg-voq5odXt7xU4jkt9OZJyHu2Wu_g&oe=625A4DA0)
 **Conclusion: Triplet state population is way more larger in the case of widefield than in spinning disk.**
-<!---
->**Comparison** If $k_{21}$ decreases 10 folds. Then $T(t)$ will increase 10 folds . This result is reasonable since when the rate of electrom from singlet excited state to the singlet ground state decreases 10 folds, more population will stay in the singlet excited state and thus more triplet state population is built.
-![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275903226_501601771497487_3124845507986282592_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Sw5PLFCvLGwAX9dIihO&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLtCOLmfSCphbVVpFVYrvd_CEeH4qnqZ3lAMS0yZjbuhQ&oe=625843AE)
--->
 
 ### How to determine the labeling density?
 Let's assume the labeling density $\rho$ is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
