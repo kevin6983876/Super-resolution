@@ -170,19 +170,19 @@ $A$: scanning area
 $\lambda_3$: the rate at which there is a population buildup in the triplet state
 $T_{eq}$: relative triplet state population in equilibrium
 #### Plugin the parameters
-$P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\frac{4}{3}\pi\omega_1^2\omega_2=8.38*10^{-20}m^3$
+$P=20mW, A=300\mu m*300\mu m, N=1000, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\frac{4}{3}\pi\omega_1^2\omega_2=8.38*10^{-20}m^3$
 
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275440469_504096897789276_3947634040283139355_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=eJF2f9G2lqAAX_TJR4Z&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIwy5-tUpt8xU6GPIsdiyJ6jBLunJo-BOmCMs3PMMkyUw&oe=62542601)
 ###### Consider the limiting case 1: the disk is not spinning. 
-1. At the excitation points:$P=20mW\Rightarrow T_{eq,spot}\approx0.63,\lambda_{3,spot}=1.34(1/\mu s)$ 
+1. At the excitation points:$P=20mW$ and split into $1000$ beams $\Rightarrow T_{eq,spot}\approx0.025,\lambda_{3,spot}=0.5(1/\mu s)$ 
 2. Outside the excitation points: $P=0\Rightarrow T_{eq,o}=0,\lambda_{3,o}=0.5(1/\mu s)$
-3. $T_{eq}=T_{eq,spot}*\frac{N\pi\omega_1^2}{A}+T_{eq,o}*\frac{A-N\pi\omega_1^2}{A}=0.63*\frac{100*\pi*(0.2\mu m)^2}{300\mu m*300\mu m}=1.39*10^{-4}$
+3. $T_{eq}=T_{eq,spot}*\frac{N\pi\omega_1^2}{A}+T_{eq,o}*\frac{A-N\pi\omega_1^2}{A}=0.025*\frac{1000*\pi*(0.2\mu m)^2}{300\mu m*300\mu m}=5.5*10^{-5}$
 4. $\lambda_3=\lambda_{3,spot}*\frac{N\pi\omega_1^2}{A}+\lambda_{3,o}*\frac{A-N\pi\omega_1^2}{A}\approx 0.5$
 
 ###### Consider the limiting case 2: the disk spins very fast $\Rightarrow$ can be considered as a uniform widefield light source. 
-1. $P_{eff}=P*\frac{N\pi\omega_1^2}{A}=2.8\mu W\Rightarrow T_{eq}\approx0.0037, \lambda_3\approx0.5(1/\mu s)$
+1. $P_{eff}=P*\frac{N\pi\omega_1^2}{A}=28\mu W\Rightarrow T_{eq}\approx0.035, \lambda_3\approx0.5(1/\mu s)$
 
-> Between two limiting cases, $T_{eq}\approx 1.39*10^{-4}$~$0.0037, \lambda_3\approx 0.5(1/\mu s)$
+> Between two limiting cases, $T_{eq}\approx 5.5*10^{-5}$~$0.035, \lambda_3\approx 0.5(1/\mu s)$
 
 ###### Case 3: pixel dwell time$\approx0.1\times\frac{1}{k_{23}}=10^{-7}s=0.1\mu s$
 ###### Case 4: pixel dwell time$\approx\frac{1}{k_{23}}=10^{-6}s=1\mu s$  
@@ -192,16 +192,30 @@ Current state of the art spinning disk rotates 15,000 rpm.[ref1](https://www.pho
 The Nipkow disk is located in a conjugate image plane and a **partial rotation** of the disk scans the specimen with approximately 1000 individual light beams that can traverse the entire image plane in less than a millisecond.
 [ref2](https://zeiss-campus.magnet.fsu.edu/articles/spinningdisk/introduction.html)
 Suppose that there are 2048 by 2048 pixels. 
-Then each beam passes $2048*2048/1000=4194pxls$ in $1$ ms. Hence, pixel dwell time $\approx 0.23 \mu s$
+Then each beam passes $2048*2048/1000=4194pxls$ in $1$ ms. Hence, pixel dwell time $\approx 0.23 \mu s$ And each beam has power $20mW/1000=20\mu W$ 
+Hence the intensity is $\frac{20\mu W}{\pi\omega_1^2}\approx 11kW/cm^2$ (Normally, widefield intenisty is about $2kW/cm^2$, an order smaller.)
 Visually,
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275641025_672701293877298_2925550402700425372_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=6Lt6Jm0wYb0AX9jGri_&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJy6iECuKrObMnXLsQ6vb75h8cz0a-NC24DGG_tDZBZNA&oe=62594369)
 
->Hence current spinning disk can be thought as Case 3.
+>Hence the state-of-the-art spinning disk can be thought as Case 3.
+Using the formula $X(t)=\left(\begin{matrix}S_0(t)\\S_1(t)\\T(t)\end{matrix}\right)=c_1e^{\lambda_1t}\bold{x}_1+c_2e^{\lambda_2t}\bold{x}_2+c_3e^{\lambda_3t}\bold{x}_3$
 
-During this short pulse ($\approx0.23\mu s$), there won't be any triplet state accumulate.
-[need a temporal dynamics... matrix solution!!]
+After calculation, $T(t)$ is as follows and reaches $\approx0.0026$ at $0.2\mu s$ and then decrease to $0$ in $5\mu s$ ($P=20mW$).
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275215182_5221333624564643_798301954719096398_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=yXdII990GYwAX9-CtD5&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJLEOiX4dYAlhSNr-cPZnDY4qurS3_mduIc-MPy2VGNtQ&oe=6258D952)
 
-Consider pulsed case $\Rightarrow$ probably will be saturated. [...]
+> Hence, the triplet development is not sufficient during this short time period. 
+
+>**Final comparison**: spinning disk vs widefield, condition: 
+$I_{spinning}=11kW/cm^2$
+$I_{wide}=1.1kW/cm^2$
+Spinning disk: $0.2\mu s$ pulse followed by $>100\mu s$ rest per pixel
+Widefield: continuous illumination
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275035014_361212279065172_8037043985315838394_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=WOKFWv3BxuEAX83l5TZ&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLs7NfR2Q1I8p9WCg-voq5odXt7xU4jkt9OZJyHu2Wu_g&oe=625A4DA0)
+**Conclusion: Triplet state population is way more larger in the case of widefield than in spinning disk.**
+<!---
+>**Comparison** If $k_{21}$ decreases 10 folds. Then $T(t)$ will increase 10 folds . This result is reasonable since when the rate of electrom from singlet excited state to the singlet ground state decreases 10 folds, more population will stay in the singlet excited state and thus more triplet state population is built.
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275903226_501601771497487_3124845507986282592_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Sw5PLFCvLGwAX9dIihO&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLtCOLmfSCphbVVpFVYrvd_CEeH4qnqZ3lAMS0yZjbuhQ&oe=625843AE)
+-->
 
 ### How to determine the labeling density?
 Let's assume the labeling density $\rho$ is $\frac{(L/d)^3}{L^3}=\frac{1}{d^3}$ 
