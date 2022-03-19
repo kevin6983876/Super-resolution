@@ -93,7 +93,7 @@ $P=20mW, A=300\mu m*300\mu m, N=100, \omega_1=0.2\mu m, \omega_2=0.5\mu m, V_0=\
 
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275440469_504096897789276_3947634040283139355_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=eJF2f9G2lqAAX_TJR4Z&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVIwy5-tUpt8xU6GPIsdiyJ6jBLunJo-BOmCMs3PMMkyUw&oe=62542601)
 
-#### Spinning disk
+##### Spinning disk
 ###### Consider the limiting case 1: the disk is not spinning. 
 1. At the excitation points:$P=20mW\Rightarrow T_{eq,spot}\approx0.63$
 2. Outside the excitation points: $P=0\Rightarrow T_{eq,o}=0$
@@ -106,7 +106,7 @@ Between two limiting cases, $T_{eq}\approx 1.39*10^{-4}$~$3.7*10^{-3}$
 
 $r_{bleach,spin}=k_4*1.39*10^{-4}$~$k_4*3.7*10^{-3}$
 
-#### Widefield
+##### Widefield
 Widefield bleaching rate is the same as the second case of spinning disk. $\Rightarrow r_{bleach,wide}=k_4*3.7*10^{-3}$
 
 >$\Rightarrow$ (Spinnig disk) confocal bleaching time is more than an order of magnitude greater than that for widefield illumination. **Agreed with observation!**

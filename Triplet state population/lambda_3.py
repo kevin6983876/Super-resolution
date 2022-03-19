@@ -1,6 +1,6 @@
 import numpy as np
 
-P_origin=0.0000028
+P_origin=0.000002
 
 sigma=1.3*10**(-20)
 P=P_origin*2.58*10**(18)
