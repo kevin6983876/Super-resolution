@@ -5,12 +5,15 @@
   - [The bleaching in PALM is time-consuming, especially in spinning disk.](#the-bleaching-in-palm-is-time-consuming-especially-in-spinning-disk)
     - [Comparison between widefield bleaching and confocal bleaching](#comparison-between-widefield-bleaching-and-confocal-bleaching)
     - [Theory explanation](#theory-explanation)
+          - [Actually, the analysis of PALM and STORM are very similar since all we want to achieve is to increase the triplet state population. For PALM, such increase can lead to faster bleaching rate, and thus cleaner background; while for STORM, such increase can lead to better blinking contrast.](#actually-the-analysis-of-palm-and-storm-are-very-similar-since-all-we-want-to-achieve-is-to-increase-the-triplet-state-population-for-palm-such-increase-can-lead-to-faster-bleaching-rate-and-thus-cleaner-background-while-for-storm-such-increase-can-lead-to-better-blinking-contrast)
       - [Parameters (bleaching)](#parameters-bleaching)
       - [Plugin the parameters (bleaching)](#plugin-the-parameters-bleaching)
         - [Spinning disk](#spinning-disk)
           - [Consider the limiting case 1: the disk is not spinning.](#consider-the-limiting-case-1-the-disk-is-not-spinning)
           - [Consider the limiting case 2: the disk spins very fast $\Rightarrow$ can be considered as a uniform widefield light source.](#consider-the-limiting-case-2-the-disk-spins-very-fast-rightarrow-can-be-considered-as-a-uniform-widefield-light-source)
         - [Widefield](#widefield)
+    - [Two-photon pulse laser energy](#two-photon-pulse-laser-energy)
+    - [A new proposal: 561 widefield bleaching + 405 spinning disk activation](#a-new-proposal-561-widefield-bleaching--405-spinning-disk-activation)
     - [Why we need that many frames?](#why-we-need-that-many-frames)
   - [STORM is less time consuming.](#storm-is-less-time-consuming)
     - [The photoswitching mechanism (Theory)](#the-photoswitching-mechanism-theory)
@@ -28,6 +31,7 @@
       - [DsRed photophysical properties (Case study)](#dsred-photophysical-properties-case-study)
       - [Kaede photophysical properties (Case study)](#kaede-photophysical-properties-case-study)
         - [Intensity dependence of ACF (The most important application)](#intensity-dependence-of-acf-the-most-important-application)
+    - [Comparison with RESOLFT](#comparison-with-resolft)
 
 
 # Principle of single-molecule imaging
@@ -74,6 +78,7 @@ Confocal
 $t_{1/2}$: time to bleach 50% starting from 1000 photons/s emission per chromophore 
 
 ### Theory explanation
+###### Actually, the analysis of PALM and STORM are very similar since all we want to achieve is to increase the triplet state population. For PALM, such increase can lead to faster bleaching rate, and thus cleaner background; while for STORM, such increase can lead to better blinking contrast. 
 [ref](https://pubmed.ncbi.nlm.nih.gov/25076144/)
 
 <!---
@@ -138,6 +143,16 @@ Let's try to consider a typical case where the average powers of spinning confoc
 $\Rightarrow X_{wide}=X_{spinning}$, $Q$ is the same for identical molecules.
 $t_{1/2, spining}$ and $t_{1/2, wide}$ is dependent on $t_{raw,spinning}$ and $t_{raw,wide}$, respectively. 
 -->
+### Two-photon pulse laser energy
+[...]
+
+### A new proposal: 561 widefield bleaching + 405 spinning disk activation
+
+Advantage: 
+1. the bleaching dynamics can be as good as widefield.
+   1. You should keep in mind that our sample is a volume, not a single layer. In 2006 Eric Betzig paper, they need 0.5-1s to bleach the whole frame of single-layered cell. 
+   2. Our widefield illumination FOV is $300*300\mu m^2$, where in Eric Betzig setup. 
+
 ### Why we need that many frames?
 Nyquist condition. Can be calculated...
 
@@ -262,3 +277,11 @@ Here is the experimental results of ACF curve of red form Kaede when varying the
 After fitting with the model
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/275184263_632338294498567_2914250142237772510_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=kwGErwIEvSAAX9wpAq6&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVKUy8xS-TacV-8hBQtIsBIXUMJeuHYSrtyWHFA3KKByRg&oe=624F8332), where $\tau_i$ is the rate, and $F_i$ is the fraction, we have two blinking dynamics (i=2) with $\tau_1=6.5$ - $32$kHz(153$\mu s$-30$\mu s$), $F_1\approx30\%$, and $\tau_2=1.3$kHz - $10$kHz(769$\mu s$-100$\mu s$), $F_2\approx20\%$.
 ![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/273648558_300396522012577_1102684933084334318_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=z9VyP9SEK5gAX-RrYIA&tn=kmMc2ol6ujtRzeuG&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLNAO7arsvHyt49Lwihhrm-Zxc1-WrLrwhwJqIOy_8e4Q&oe=6248DEB8)
+
+
+### Comparison with RESOLFT
+[Source](https://www.nature.com/articles/nature10497)
+
+![](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/277214839_1572105379856358_2537058519885859119_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_ohc=lFZMKyk2ucIAX_KHkK9&tn=keTzxKsx3oMeGvL-&_nc_ht=scontent-tpe1-1.xx&oh=03_AVJIb9K3wAhCcqEZW5GkMaspmu23fyJEpXWzZXR2qn3i7A&oe=626515CD)
+The doughnut-shaped beam intensity is similar to the probing beam intensity (and this intensity is similar to wide field intensity $1kW cm^{-2}$). 
+
