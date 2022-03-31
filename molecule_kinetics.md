@@ -15,9 +15,9 @@
     - [Two-photon pulse laser energy](#two-photon-pulse-laser-energy)
     - [A new proposal: 561 widefield bleaching + 405 spinning disk activation](#a-new-proposal-561-widefield-bleaching--405-spinning-disk-activation)
     - [Why we need that many frames?](#why-we-need-that-many-frames)
+    - [Kaede bleaching](#kaede-bleaching)
   - [STORM is less time consuming.](#storm-is-less-time-consuming)
     - [The photoswitching mechanism (Theory)](#the-photoswitching-mechanism-theory)
-          - [打561 Kaede會不會回到488的態? 也沒關係，還是在dark state](#打561-kaede會不會回到488的態-也沒關係還是在dark-state)
     - [How to calculate blinking rate?](#how-to-calculate-blinking-rate)
       - [Parameters:](#parameters)
       - [Comparison: different scanning speed of spinning disk](#comparison-different-scanning-speed-of-spinning-disk)
@@ -156,11 +156,13 @@ Advantage:
 ### Why we need that many frames?
 Nyquist condition. Can be calculated...
 
+### Kaede bleaching
+[Source](https://pubmed.ncbi.nlm.nih.gov/16538628/)
 ## STORM is less time consuming.
 >Unlike PALM that has fixed (ON-state) bleaching time, the ON/OFF states dynamics in STORM can be adjusted by external means (chemical condition, excitation power). $\Rightarrow$ **less time consuming.**
 
 ### The photoswitching mechanism (Theory)
-###### 打561 Kaede會不會回到488的態? 也沒關係，還是在dark state
+[Source](https://link.springer.com/article/10.1007/BF01878460)
 A three-state model. Using this model can explain why there is fast blinking.  
 
 ![Three state model](https://scontent-tpe1-1.xx.fbcdn.net/v/t1.15752-9/274254602_509407327286982_4285864595330128796_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=PnSnIKX4qHAAX_te7v0&_nc_oc=AQk0Qe9OIMObcV-zj2Hi0inw2RXwQmoMCAQ1aBzjqbyDCiYuIqpISI0xffLo6J_n-18&_nc_ht=scontent-tpe1-1.xx&oh=03_AVLD4UiBliLSvw4tzKnsA4pm-gcXVdWx7UNizzoUrpuiuQ&oe=624FEEA4)
@@ -269,8 +271,10 @@ We can also obtain $k_{12}=\sigma_{exc}\times \frac{P}{\pi\omega_1^2}$
 $\frac{P}{\pi\omega_1^2}$ needs to be expressed as photons per square meter per second. $P=P_{origin}*2.58*10^{18}$
 
 #### DsRed photophysical properties (Case study)
+[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1301652/)
 
 #### Kaede photophysical properties (Case study)
+[Source](https://www.cell.com/fulltext/S0006-3495(05)72986-6)
 ##### Intensity dependence of ACF (The most important application)
 Here is the experimental results of ACF curve of red form Kaede when varying the excitation intensity (from $2.5$ to $78\frac{kW}{cm^2}$). 
 
